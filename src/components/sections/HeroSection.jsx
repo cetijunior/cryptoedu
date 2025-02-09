@@ -131,10 +131,10 @@ const HeroSection = () => {
                 transition={{ duration: 1 }}
                 className="relative z-10 select-none text-center p-20 space-y-6 lg:-mt-44 -mt-60"
             >
-                <h1 className="text-6xl font-extrabold tracking-wide text-yellow-400 drop-shadow-lg">
+                <h1 className="lg:text-6xl text-5xl font-extrabold tracking-wide text-yellow-400 drop-shadow-lg">
                     Welcome to {" "} <span className="text-white">CryptoEdu</span>
                 </h1>
-                <CurrencyBtc size={100} className="text-yellow-400 align-middle w-full animate-pulse" />
+                <CurrencyBtc className="text-yellow-400 lg:size-20 size-10 align-middle w-full animate-pulse" />
                 <p className="text-lg text-gray-300 max-w-lg mx-auto">
                     Revolutionizing the future of decentralized finance with Bitcoin and blockchain technology.
                 </p>
