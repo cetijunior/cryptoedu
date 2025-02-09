@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { motion } from 'framer-motion';
-import { Rocket } from '@phosphor-icons/react';
+import { Rocket, TwitterLogo, GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
 
 const HeroSection = () => {
     const canvasRef = useRef(null);
@@ -23,9 +23,9 @@ const HeroSection = () => {
         renderer.setClearColor(0x000000, 0);
 
         // Lighting
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        const ambientLight = new THREE.AmbientLight(0xffffff, 30);
         scene.add(ambientLight);
-        const pointLight = new THREE.PointLight(0xf2a900, 1, 100);
+        const pointLight = new THREE.PointLight(0xf2a900, 40, 100);
         pointLight.position.set(5, 5, 5);
         scene.add(pointLight);
 
@@ -66,7 +66,7 @@ const HeroSection = () => {
             }
         };
 
-        setTimeout(createCoinsAroundBitcoin, 1000); // Ensure model is loaded before creating coins
+        setTimeout(createCoinsAroundBitcoin, 1000);
 
         // Global Animation Loop
         const animateScene = () => {
@@ -89,7 +89,6 @@ const HeroSection = () => {
             scene.add(newCoin);
             objectsRef.current.push(newCoin);
 
-            // Animate falling effect
             const fallAnimation = () => {
                 if (newCoin.position.y > -1.5) {
                     newCoin.position.y -= 0.02;
@@ -123,14 +122,14 @@ const HeroSection = () => {
     return (
         <div className="relative min-h-screen w-full bg-gradient-to-b from-black via-gray-900 to-black text-white overflow-hidden flex flex-col items-center justify-center">
             {/* 3D Model Canvas */}
-            <canvas ref={canvasRef} className="absolute top-20 left-10 w-full h-full z-0" />
+            <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full z-0" />
 
             {/* Text Content Below the Bitcoin Model */}
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
-                className="relative z-10 select-none text-center space-y-6"
+                className="relative z-10 select-none text-center space-y-6 lg:-mt-44 -mt-60"
             >
                 <h1 className="text-6xl font-extrabold tracking-wide text-yellow-400 drop-shadow-lg">
                     Welcome to <span className="text-white">CryptoDo</span>
@@ -143,6 +142,13 @@ const HeroSection = () => {
                     Get Started
                 </button>
             </motion.div>
+
+            {/* Social Icons Section */}
+            <div className="absolute bottom-40 flex space-x-6 text-yellow-400">
+                <a href="#" className="hover:text-yellow-600"><TwitterLogo size={32} /></a>
+                <a href="#" className="hover:text-yellow-600"><GithubLogo size={32} /></a>
+                <a href="#" className="hover:text-yellow-600"><LinkedinLogo size={32} /></a>
+            </div>
         </div>
     );
 };
