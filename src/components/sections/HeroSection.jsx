@@ -3,7 +3,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { motion } from 'framer-motion';
-import { Rocket, TwitterLogo, GithubLogo, LinkedinLogo } from '@phosphor-icons/react';
+import { Rocket, TwitterLogo, GithubLogo, LinkedinLogo, CurrencyBtc } from '@phosphor-icons/react';
 
 const HeroSection = () => {
     const canvasRef = useRef(null);
@@ -122,18 +122,19 @@ const HeroSection = () => {
     return (
         <div className="relative min-h-screen w-full bg-gradient-to-b from-black via-gray-900 to-black text-white overflow-hidden flex flex-col items-center justify-center">
             {/* 3D Model Canvas */}
-            <canvas ref={canvasRef} className="absolute top-0 left-0 w-full h-full z-0" />
+            <canvas ref={canvasRef} className="absolute scale-90 -top-8 left-0 lg:rounded-full rounded-full border shadow-2xl shadow-yellow-400 border-yellow-400/25 w-full h-full z-0 " />
 
             {/* Text Content Below the Bitcoin Model */}
             <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
-                className="relative z-10 select-none text-center space-y-6 lg:-mt-44 -mt-60"
+                className="relative z-10 select-none text-center p-20 space-y-6 lg:-mt-44 -mt-60"
             >
                 <h1 className="text-6xl font-extrabold tracking-wide text-yellow-400 drop-shadow-lg">
-                    Welcome to <span className="text-white">CryptoDo</span>
+                    Welcome to {" "} <span className="text-white">CryptoEdu</span>
                 </h1>
+                <CurrencyBtc size={100} className="text-yellow-400 align-middle w-full animate-pulse" />
                 <p className="text-lg text-gray-300 max-w-lg mx-auto">
                     Revolutionizing the future of decentralized finance with Bitcoin and blockchain technology.
                 </p>
