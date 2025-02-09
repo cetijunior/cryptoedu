@@ -1,0 +1,36 @@
+{
+    "name": "cryptoedu",
+    "version": "1.0.0",
+    "description": "A cryptocurrency education platform with real-time market data",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@headlessui/react": "^1.7.19",
+        "@heroicons/react": "^2.2.0",
+        "@phosphor-icons/react": "^2.1.7",
+        "@tanstack/react-query": "^5.66.0",
+        "axios": "^1.7.9",
+        "chart.js": "^4.4.7",
+        "framer-motion": "^12.4.1",
+        "phosphor-icons": "^1.4.2",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
+        "react-router-dom": "^6.29.0",
+        "react-useanimations": "^2.10.0",
+        "three": "^0.173.0",
+        "uvcanvas": "^0.2.2"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.20",
+        "postcss": "^8.5.1",
+        "tailwindcss": "^3.4.17",
+        "vite": "^4.5.1"
+    },
+    "main": "tailwind.config.js",
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}
