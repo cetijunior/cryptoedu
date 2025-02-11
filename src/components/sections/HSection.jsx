@@ -10,7 +10,7 @@ const Hero = () => {
             <ParallaxText text="BITCOIN:" start={-100} end={100} className="text-6xl md:text-8xl font-bold text-yellow-400 text-center absolute top-1/4 w-full" />
             <ParallaxText text="THE FUTURE OF MONEY" start={-100} end={100} className="text-6xl mt-32 md:text-8xl font-bold text-yellow-400 text-center absolute top-1/4 w-full" />
 
-            <ParallaxText text="DECENTRALIZATION CHANGES EVERYTHING" start={0} end={150} className="text-4xl md:text-6xl mt-32 font-semibold text-yellow-400 text-center absolute top-1/2 w-full" />
+            <ParallaxText text="DECENTRALIZATION CHANGES EVERYTHING" start={0} end={150} className="text-4xl z-50 md:text-6xl md:mt-72 mt-32 font-semibold text-yellow-400 text-center absolute top-1/2 w-full" />
             <ParallaxText text="DISCOVER THE POWER OF BLOCKCHAIN" start={50} end={200} className="text-3xl md:text-5xl font-medium text-yellow-500 text-center absolute top-3/4 w-full" />
             <ParallaxImages />
             <div className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-b from-black/0 to-black" />
