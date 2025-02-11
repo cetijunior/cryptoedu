@@ -15,7 +15,7 @@ function App() {
     return (
         <Router>
             {/* Main Container */}
-            <div className="min-h-screen flex flex-col bg-gradient-to-b from-[#020617] to-[#0f172a] text-white">
+            <div className="min-h-screen flex flex-col text-white">
                 {/* Fixed Navbar at the Top */}
                 <Navbar className="fixed top-0 w-full z-50" />
 

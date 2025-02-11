@@ -1,5 +1,6 @@
 import React from 'react'
 import HeroSection from '../components/sections/HeroSection'
+import Hero from '../components/sections/HSection'
 import BitcoinSection from '../components/sections/BitcoinSection'
 
 
@@ -7,7 +8,10 @@ function LandingPage() {
     return (
 
         <div>
-            <HeroSection />
+            <Hero />
+
+            {/* <HeroSection /> */}
+
             <BitcoinSection />
         </div>
     )
