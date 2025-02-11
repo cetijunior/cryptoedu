@@ -1,63 +1,87 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { House, Stack, GridFour, Wallet, List, X } from "@phosphor-icons/react";
-import { motion, useAnimate } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className="sticky z-50 left-0 w-full flex justify-between items-center px-8 py-4 backdrop-blur-lg bg-black/60 border-b border-yellow-500 shadow-xl">
-            <Link to="/" className="text-3xl font-extrabold text-yellow-400 tracking-wide flex items-center gap-2">
-                <span className="animate-pulse text-yellow-500">₿</span> CryptoDo
-            </Link>
+        <div className="fixed w-full z-50">
+            {/* Primary Navbar */}
+            <nav className="relative bg-black/80 backdrop-blur-xl border-b border-white/10">
+                <div className="max-w-7xl mx-auto">
+                    <div className="flex justify-between items-center px-4 md:px-8 h-12">
+                        {/* Logo */}
+                        <Link to="/" className="text-xl font-medium text-white hover:text-yellow-400 transition-colors">
+                            <span className="text-yellow-400">₿</span>
+                        </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex gap-6">
-                <NavItem to="/" icon={<House size={24} />} text="Home" />
-                <NavItem to="/choose-blockchain" icon={<Stack size={24} />} text="Blockchain" />
-                <NavItem to="/choose-token" icon={<GridFour size={24} />} text="Tokens" />
-                <NavItem to="/market" icon={<Wallet size={24} />} text="Market" />
-            </div>
+                        {/* Desktop Navigation */}
+                        <div className="hidden md:flex space-x-8">
+                            <NavItem to="/" text="Home" />
+                            <NavItem to="/choose-blockchain" text="Blockchain" />
+                            <NavItem to="/choose-token" text="Tokens" />
+                            <NavItem to="/market" text="Market" />
+                        </div>
 
-            {/* Mobile Menu Toggle */}
-            <button className="md:hidden text-yellow-400" onClick={() => setIsOpen(!isOpen)}>
-                {isOpen ? <X size={32} /> : <List size={32} />}
-            </button>
+                        {/* Mobile Menu Button */}
+                        <button
+                            className="md:hidden text-white/80 hover:text-white transition-colors"
+                            onClick={() => setIsOpen(!isOpen)}
+                        >
+                            {isOpen ? <X size={24} /> : <List size={24} />}
+                        </button>
+                    </div>
+                </div>
+            </nav>
 
-            {/* Mobile Navigation */}
-            {isOpen && (
-                <motion.div
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    className="absolute bg-black/80 backdrop-blur-lg rounded-lg shadow-xl border border-yellow-500 top-16 left-4 right-4 px-6 py-6 flex flex-col gap-4 text-center"
-                >
-                    <NavItem to="/" icon={<House size={24} />} text="Home" onClick={() => setIsOpen(false)} />
-                    <NavItem to="/choose-blockchain" icon={<Stack size={24} />} text="Blockchain" onClick={() => setIsOpen(false)} />
-                    <NavItem to="/choose-token" icon={<GridFour size={24} />} text="Tokens" onClick={() => setIsOpen(false)} />
-                    <NavItem to="/market" icon={<Wallet size={24} />} text="Market" onClick={() => setIsOpen(false)} />
-                </motion.div>
-            )}
-        </nav>
+            {/* Mobile Menu */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="md:hidden bg-black/95 backdrop-blur-xl border-b border-white/10"
+                    >
+                        <div className="px-4 py-4 space-y-2">
+                            <MobileNavItem to="/" text="Home" onClick={() => setIsOpen(false)} />
+                            <MobileNavItem to="/choose-blockchain" text="Blockchain" onClick={() => setIsOpen(false)} />
+                            <MobileNavItem to="/choose-token" text="Tokens" onClick={() => setIsOpen(false)} />
+                            <MobileNavItem to="/market" text="Market" onClick={() => setIsOpen(false)} />
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
+        </div>
     );
 };
 
-const NavItem = ({ to, icon, text, onClick }) => {
-    const [scope, animate] = useAnimate();
-
+const NavItem = ({ to, text }) => {
     return (
-        <Link to={to}
-            ref={scope}
-            className="flex flex-col items-center text-gray-300 hover:text-yellow-400 transition-all py-2"
-            onMouseEnter={() => animate(scope.current, { scale: 1.1, textShadow: "0px 0px 10px rgba(255, 215, 0, 0.8)" }, { duration: 0.3 })}
-            onMouseLeave={() => animate(scope.current, { scale: 1, textShadow: "none" }, { duration: 0.3 })}
-            onClick={onClick}
+        <Link
+            to={to}
+            className="relative text-sm text-white/80 hover:text-white transition-colors group"
         >
-            <div className="bg-gray-900 p-3 rounded-full shadow-lg border border-yellow-500 hover:shadow-yellow-400/80 transition-all">
-                {icon}
-            </div>
-            <span className="text-sm mt-1 uppercase font-semibold">{text}</span>
+            {text}
+            <motion.div
+                className="absolute -bottom-4 left-0 right-0 h-[1px] bg-yellow-400 opacity-0 group-hover:opacity-100"
+                initial={false}
+                transition={{ duration: 0.2 }}
+            />
+        </Link>
+    );
+};
+
+const MobileNavItem = ({ to, text, onClick }) => {
+    return (
+        <Link
+            to={to}
+            onClick={onClick}
+            className="block py-2 text-lg text-white/80 hover:text-white transition-colors"
+        >
+            {text}
         </Link>
     );
 };

@@ -3,140 +3,86 @@ import { Lightning, Envelope, TwitterLogo, GithubLogo, LinkedinLogo, DiscordLogo
 
 const Footer = () => {
     return (
-        <footer className="backdrop-blur-lg bg-gray-900/50 border-t border-gray-800 shadow-xl py-12">
-            <div className="container mx-auto px-4">
-                {/* Footer Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    {/* About Section */}
-                    <div className="space-y-4">
+        <footer className="bg-black text-gray-400 py-12 border-t border-gray-800">
+            <div className="container mx-auto px-6 max-w-6xl">
+                {/* Top Section */}
+                <div className="flex flex-col md:flex-row justify-start w-full mx-auto gap-12 border-b border-gray-800 pb-8">
+                    {/* Logo & Tagline */}
+                    <div className="flex flex-col space-y-3">
                         <div className="flex items-center space-x-2">
                             <Lightning size={24} className="text-yellow-400" />
-                            <span className="text-xl font-bold text-white">CryptoDo</span>
+                            <span className="text-2xl font-semibold text-white">CryptoDo</span>
                         </div>
-                        <p className="text-gray-300">
-                            Revolutionizing decentralized finance with cutting-edge blockchain technology.
+                        <p className="text-sm max-w-sm">
+                            The future of decentralized finance starts here. Secure, scalable, and built for the next generation of blockchain enthusiasts.
                         </p>
-                        <div className="flex space-x-4">
-                            <a
-                                href="https://twitter.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-300 hover:text-yellow-400 transition-all"
-                            >
-                                <TwitterLogo size={24} />
-                            </a>
-                            <a
-                                href="https://github.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-300 hover:text-yellow-400 transition-all"
-                            >
-                                <GithubLogo size={24} />
-                            </a>
-                            <a
-                                href="https://linkedin.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-300 hover:text-yellow-400 transition-all"
-                            >
-                                <LinkedinLogo size={24} />
-                            </a>
-                            <a
-                                href="https://discord.com"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text-gray-300 hover:text-yellow-400 transition-all"
-                            >
-                                <DiscordLogo size={24} />
-                            </a>
-                        </div>
                     </div>
 
-                    {/* Quick Links Section */}
-                    <div className="space-y-4">
-                        <h3 className="text-lg font-semibold text-yellow-400">Quick Links</h3>
-                        <ul className="space-y-2">
-                            <li>
-                                <a href="/" className="text-gray-300 hover:text-yellow-400 transition-all">
-                                    Home
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/choose-blockchain" className="text-gray-300 hover:text-yellow-400 transition-all">
-                                    Blockchain
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/choose-token" className="text-gray-300 hover:text-yellow-400 transition-all">
-                                    Tokens
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/market" className="text-gray-300 hover:text-yellow-400 transition-all">
-                                    Market
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                    {/* Links */}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-8 w-full">
+                        <FooterColumn title="Explore">
+                            <FooterLink href="/">Home</FooterLink>
+                            <FooterLink href="/choose-blockchain">Blockchain</FooterLink>
+                            <FooterLink href="/choose-token">Tokens</FooterLink>
+                            <FooterLink href="/market">Market</FooterLink>
+                        </FooterColumn>
 
-                    {/* Resources Section */}
-                    <div className="space-y-4">
-                        <h3 className="text-lg font-semibold text-yellow-400">Resources</h3>
-                        <ul className="space-y-2">
-                            <li>
-                                <a href="/docs" className="text-gray-300 hover:text-yellow-400 transition-all">
-                                    Documentation
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/blog" className="text-gray-300 hover:text-yellow-400 transition-all">
-                                    Blog
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/faq" className="text-gray-300 hover:text-yellow-400 transition-all">
-                                    FAQs
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/support" className="text-gray-300 hover:text-yellow-400 transition-all">
-                                    Support
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                        <FooterColumn title="Resources">
+                            <FooterLink href="/docs">Documentation</FooterLink>
+                            <FooterLink href="/blog">Blog</FooterLink>
+                            <FooterLink href="/faq">FAQs</FooterLink>
+                            <FooterLink href="/support">Support</FooterLink>
+                        </FooterColumn>
 
-                    {/* Newsletter Section */}
-                    <div className="space-y-4">
-                        <h3 className="text-lg font-semibold text-yellow-400">Subscribe to Our Newsletter</h3>
-                        <p className="text-gray-300">
-                            Stay updated with the latest news and updates from CryptoDo.
-                        </p>
-                        <form className="flex space-x-2">
-                            <input
-                                type="email"
-                                placeholder="Your email"
-                                className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white placeholder-gray-500 focus:border-yellow-400 outline-none"
-                            />
-                            <button
-                                type="submit"
-                                className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-4 py-2 rounded-lg shadow-lg hover:shadow-yellow-400/50 transition-all"
-                            >
-                                <Envelope size={20} />
-                            </button>
-                        </form>
+                        <FooterColumn title="Community">
+                            <FooterLink href="https://twitter.com">Twitter</FooterLink>
+                            <FooterLink href="https://github.com">GitHub</FooterLink>
+                            <FooterLink href="https://linkedin.com">LinkedIn</FooterLink>
+                            <FooterLink href="https://discord.com">Discord</FooterLink>
+                        </FooterColumn>
+
+                        <FooterColumn title="Stay Updated">
+                            <form className="flex flex-col w-full space-y-3 mt-2">
+                                <input
+                                    type="email"
+                                    placeholder="Your email"
+                                    className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white placeholder-gray-500 focus:border-yellow-400 outline-none"
+                                />
+                                <button
+                                    type="submit"
+                                    className="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-4 py-2 rounded-lg shadow-lg hover:shadow-yellow-400/50 transition-all"
+                                >
+                                    <Envelope className='self-center w-full' size={24} />
+                                </button>
+                            </form>
+                        </FooterColumn>
                     </div>
                 </div>
 
                 {/* Footer Bottom */}
-                <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-                    <p className="text-gray-300">
-                        &copy; {new Date().getFullYear()} CryptoDo. All rights reserved.
-                    </p>
+                <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 pt-6">
+                    <p>&copy; {new Date().getFullYear()} CryptoDo. All rights reserved.</p>
+                    <div className="flex space-x-6">
+                        <FooterLink href="/privacy">Privacy Policy</FooterLink>
+                        <FooterLink href="/terms">Terms of Service</FooterLink>
+                    </div>
                 </div>
             </div>
         </footer>
     );
 };
+
+const FooterColumn = ({ title, children }) => (
+    <div className="space-y-3">
+        <h3 className="text-sm font-semibold text-white uppercase">{title}</h3>
+        <ul className="space-y-2 text-sm">{children}</ul>
+    </div>
+);
+
+const FooterLink = ({ href, children }) => (
+    <li>
+        <a href={href} className="hover:text-yellow-400 transition-all">{children}</a>
+    </li>
+);
 
 export default Footer;
